@@ -93,7 +93,7 @@ pipeline {
         stage('Wait for deployment in DEV env') {
             //TODO: Watch deployment until pod is in 'Running' state
             steps {
-               scriptv{
+               script {
                     openshift.withCluster() {
                       openshift.withProject(env.DEV_PROJECT) {
                         openshift.selector("bc", "${APP_NAME}").related('pods').untilEach(1) {
